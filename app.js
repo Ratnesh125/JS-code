@@ -16,6 +16,7 @@ const express =require("express");
 var app=express();
 app.listen(3000);
 app.get("/",(req,res)=>{  res.sendFile( __dirname + "/home.html"); });
-app.get("/login",(req,res)=>{  res.sendFile( __dirname + "/login.html"); });
+// app.get("/login",(req,res)=>{  res.sendFile( __dirname + "/login.html"); });
+app.get("/xyz",(req,res)=>{  res.send( req.query); });
 
 

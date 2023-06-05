@@ -1,0 +1,6 @@
+download mongo db
+extract bin from it
+copy it in folder name mymongodb also create a folder in it named as "Data"
+open cmd in bin folder type server side command
+minimize it
+open cmd in bin folder type client side commands

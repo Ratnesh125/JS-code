@@ -1,0 +1,102 @@
+Microsoft Windows [Version 10.0.22621.674]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\mymongodb\bin>mongo
+MongoDB shell version v5.0.18
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("e6c3b004-5430-4ddb-ba07-71566eaae441") }
+MongoDB server version: 5.0.18
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+        https://docs.mongodb.com/
+Questions? Try the MongoDB Developer Community Forums
+        https://community.mongodb.com
+---
+The server generated these startup warnings when booting:
+        2023-06-05T09:35:04.498+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+        2023-06-05T09:35:04.498+05:30: This server is bound to localhost. Remote systems will be unable to connect to this server. Start the server with --bind_ip <address> to specify which IP addresses it should serve responses from, or with --bind_ip_all to bind to all interfaces. If this behavior is desired, start the server with --bind_ip 127.0.0.1 to disable this warning
+---
+> show databases
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> usemydb
+uncaught exception: ReferenceError: usemydb is not defined :
+@(shell):1:1
+> usemydb
+uncaught exception: ReferenceError: usemydb is not defined :
+@(shell):1:1
+> use mydb
+switched to db mydb
+> db.students.insert({enroll:101,name:"first",dept:"cse"});
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({enroll:102,name:"second",dept:"cse"});
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({enroll:103,name:"third",dept:"cse"});
+WriteResult({ "nInserted" : 1 })
+> db.students.find().prettty();
+uncaught exception: TypeError: db.students.find(...).prettty is not a function :
+@(shell):1:1
+> db.students.find().pretty();
+{
+        "_id" : ObjectId("647d62ceef6105d59b3adf32"),
+        "enroll" : 101,
+        "name" : "first",
+        "dept" : "cse"
+}
+{
+        "_id" : ObjectId("647d62e0ef6105d59b3adf33"),
+        "enroll" : 102,
+        "name" : "second",
+        "dept" : "cse"
+}
+{
+        "_id" : ObjectId("647d62eeef6105d59b3adf34"),
+        "enroll" : 103,
+        "name" : "third",
+        "dept" : "cse"
+}
+> db.students.remove(enroll:101);
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:25
+> db.students.remove({enroll:101});
+WriteResult({ "nRemoved" : 1 })
+> db.students.find().pretty();
+{
+        "_id" : ObjectId("647d62e0ef6105d59b3adf33"),
+        "enroll" : 102,
+        "name" : "second",
+        "dept" : "cse"
+}
+{
+        "_id" : ObjectId("647d62eeef6105d59b3adf34"),
+        "enroll" : 103,
+        "name" : "third",
+        "dept" : "cse"
+}
+> db.students.update({enroll:101},{$set:{name:"new name"}});
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.students.find().pretty();
+{
+        "_id" : ObjectId("647d62e0ef6105d59b3adf33"),
+        "enroll" : 102,
+        "name" : "second",
+        "dept" : "cse"
+}
+{
+        "_id" : ObjectId("647d62eeef6105d59b3adf34"),
+        "enroll" : 103,
+        "name" : "third",
+        "dept" : "cse"
+}
+> db.students.update({enroll:102},{$set:{name:"new name"}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+>

@@ -1,7 +1,7 @@
 const MyModel=require("../models/mymodel");
 const express=require("express");
 const router =express.Router();
-// routes
+// routes of home
 router.get("/",(req,res)=>{
     res.render("home");
     var r=new MyModel(req.query);
